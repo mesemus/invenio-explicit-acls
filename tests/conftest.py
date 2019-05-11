@@ -36,9 +36,9 @@ from collections import namedtuple
 
 import pytest
 from elasticsearch.exceptions import RequestError
-from flask import Flask, make_response, url_for
+from flask import Flask, make_response, url_for, current_app
 from flask_login import LoginManager, current_user, login_user
-from flask_principal import Principal
+from flask_principal import Principal, identity_changed, Identity
 from invenio_access import InvenioAccess
 from invenio_accounts.models import Role, User
 from invenio_db import InvenioDB
@@ -54,6 +54,7 @@ from invenio_rest import InvenioREST
 from invenio_search import InvenioSearch, current_search, current_search_client
 from sqlalchemy_utils.functions import create_database, database_exists
 
+from helpers import set_identity
 from invenio_explicit_acls.acl_records_search import ACLRecordsSearch
 from invenio_explicit_acls.ext import InvenioExplicitAcls
 from invenio_explicit_acls.record import SchemaEnforcingRecord
@@ -207,7 +208,9 @@ def app(request, search_class):
     def test_login(id):
         print("test: logging user with id", id)
         response = make_response()
-        login_user(User.query.get(id))
+        user = User.query.get(id)
+        login_user(user)
+        set_identity(user)
         return response
 
     with app.app_context():
