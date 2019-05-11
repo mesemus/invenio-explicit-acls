@@ -162,7 +162,7 @@ def test_aclrecordsearch_explicit_user(app, db, es, es_acl_prepare, test_users):
     current_search_client.indices.flush()
 
     rs = ACLRecordsSearch(user=test_users.u1, context={
-        'system_roles': [authenticated_user]
+        'system_roles': ['authenticated_user']
     })
     rec_id = str(rec.id)
     print(json.dumps(rs.query(Ids(values=[rec_id])).query.to_dict(), indent=4))
