@@ -30,7 +30,7 @@ import json
 import uuid
 
 import flask
-from flask import url_for, current_app
+from flask import current_app, url_for
 from flask_principal import Identity, identity_changed
 from invenio_access import authenticated_user
 from invenio_db import db

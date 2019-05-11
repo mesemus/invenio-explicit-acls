@@ -36,9 +36,10 @@ from collections import namedtuple
 
 import pytest
 from elasticsearch.exceptions import RequestError
-from flask import Flask, make_response, url_for, current_app
+from flask import Flask, current_app, make_response, url_for
 from flask_login import LoginManager, current_user, login_user
-from flask_principal import Principal, identity_changed, Identity
+from flask_principal import Identity, Principal, identity_changed
+from helpers import set_identity
 from invenio_access import InvenioAccess
 from invenio_accounts.models import Role, User
 from invenio_db import InvenioDB
@@ -54,7 +55,6 @@ from invenio_rest import InvenioREST
 from invenio_search import InvenioSearch, current_search, current_search_client
 from sqlalchemy_utils.functions import create_database, database_exists
 
-from helpers import set_identity
 from invenio_explicit_acls.acl_records_search import ACLRecordsSearch
 from invenio_explicit_acls.ext import InvenioExplicitAcls
 from invenio_explicit_acls.record import SchemaEnforcingRecord

@@ -29,7 +29,7 @@ from flask import current_app
 from flask_principal import Identity, identity_changed
 from flask_security import AnonymousUser
 from helpers import set_identity
-from invenio_access import authenticated_user, any_user
+from invenio_access import any_user, authenticated_user
 
 from invenio_explicit_acls.actors import SystemRoleActor
 
