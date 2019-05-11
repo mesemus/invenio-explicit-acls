@@ -113,7 +113,7 @@ class SystemRoleActor(Actor):
             roles = []
             for r in context['system_roles']:
                 if isinstance(r, str):
-                    roles.append(str)
+                    roles.append(r)
                 elif r[0] == 'system_role':
                     roles.append(r[1])
             roles = sorted(roles)
