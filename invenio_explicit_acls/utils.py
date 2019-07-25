@@ -33,7 +33,7 @@ from sqlalchemy.types import Integer, String, TypeDecorator
 
 from invenio_explicit_acls.proxies import current_explicit_acls
 from invenio_explicit_acls.proxies import \
-    current_schema_to_index as schema_to_index
+    current_schema_to_index as schema_to_index      # keep it here for backward compatibility
 
 
 def default_schema_to_index(schema):
