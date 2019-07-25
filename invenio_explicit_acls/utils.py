@@ -45,6 +45,11 @@ def default_schema_to_index(schema):
     return index, doc_type
 
 
+def default_schema_to_index_returning_doc(schema):
+    index, _ = default_schema_to_index(schema)
+    return index, '_doc'
+
+
 class ArrayType(TypeDecorator):
     """
     Sqlite-like does not support arrays, so let's use a custom type decorator.
