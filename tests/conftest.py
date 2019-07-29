@@ -32,6 +32,7 @@ import os
 import shutil
 import sys
 import tempfile
+import traceback
 from collections import namedtuple
 
 import pytest
@@ -240,10 +241,20 @@ def es(app):
     # remove all indices and data to get to a well-defined state
     for idx in current_search_client.indices.get('*'):
         try:
+            print("Removing index", idx)
             current_search_client.indices.delete(idx)
         except:
+            traceback.print_exc()
             pass
-
+    current_search_client.indices.flush()
+    # just to make sure no index is left untouched
+    for idx in current_search_client.indices.get('*'):
+        try:
+            print("Warning: leftover index", idx)
+            current_search_client.indices.delete(idx)
+        except:
+            traceback.print_exc()
+            pass
     try:
         list(current_search.create())
     except RequestError:
