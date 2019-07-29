@@ -48,6 +48,7 @@ def test_version():
 def test_prepare(app, db, es, es_acl_prepare):
     assert 'invenio_explicit_acls-acl-v1.0.0-records-record-v1.0.0' in current_search_client.indices.get('*')
     mapping = current_search_client.indices.get_mapping('records-record-v1.0.0')
+    print(mapping)
     mapping = mapping['records-record-v1.0.0']['mappings']['record-v1.0.0']['properties']
     assert '_invenio_explicit_acls' in mapping
 
