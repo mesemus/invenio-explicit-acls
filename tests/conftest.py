@@ -239,6 +239,8 @@ def db(app):
 def es(app):
     """Elasticsearch fixture."""
     # remove all indices and data to get to a well-defined state
+    current_search_client.indices.flush()
+    current_search_client.indices.refresh()
     for idx in current_search_client.indices.get('*'):
         try:
             print("Removing index", idx)
@@ -247,6 +249,7 @@ def es(app):
             traceback.print_exc()
             pass
     current_search_client.indices.flush()
+    current_search_client.indices.refresh()
     # just to make sure no index is left untouched
     for idx in current_search_client.indices.get('*'):
         try:
