@@ -50,6 +50,7 @@ extras_require = {
     'all-mysql': [
         'pyld>=1.0.4',
         'invenio[base,auth,metadata,files,mysql,elasticsearch6]~={0}'.format(INVENIO_VERSION),
+        'mysqlclient>=1.4'
     ],
     'all-sqlite': [
         'pyld>=1.0.4',
