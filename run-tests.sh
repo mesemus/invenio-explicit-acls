@@ -28,5 +28,8 @@ isort -rc -c -df . && \
 check-manifest --ignore ".travis-*" && \
 sphinx-build -qnNW docs docs/_build/html && \
 export PYTHONPATH=$PWD:$PYTHONPATH
+ls -la
+ls -la tests
+echo $PYTHONPATH
 python setup.py test && \
 sphinx-build -qnNW -b doctest docs docs/_build/doctest
