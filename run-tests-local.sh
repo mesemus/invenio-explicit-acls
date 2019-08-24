@@ -44,6 +44,8 @@ pip install -e .[$EXTRAS]
 pip uninstall -y invenio
 pip install -e .[tests]
 
+pip uninstall pytest-invenio
+
 sphinx-build -qnNW docs docs/_build/html
 
 sudo -u es /tmp/elasticsearch/bin/elasticsearch &
