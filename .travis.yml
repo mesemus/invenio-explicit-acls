@@ -29,8 +29,8 @@ env:
     - MYSQL_SQLALCHEMY_DATABASE_URI="mysql://root@localhost/invenio"
   matrix:
     - REQUIREMENTS=release EXTRAS=all-postgresql ES_URL=$ES6_DOWNLOAD_URL SQLALCHEMY_DATABASE_URI=$POSTGRESQL_SQLALCHEMY_DATABASE_URI
-#    - REQUIREMENTS=release EXTRAS=all-sqlite ES_URL=$ES6_DOWNLOAD_URL
-#    - REQUIREMENTS=release EXTRAS=all-mysql ES_URL=$ES6_DOWNLOAD_URL SQLALCHEMY_DATABASE_URI=$MYSQL_SQLALCHEMY_DATABASE_URI
+    - REQUIREMENTS=release EXTRAS=all-sqlite ES_URL=$ES6_DOWNLOAD_URL
+    - REQUIREMENTS=release EXTRAS=all-mysql ES_URL=$ES6_DOWNLOAD_URL SQLALCHEMY_DATABASE_URI=$MYSQL_SQLALCHEMY_DATABASE_URI
 
 python:
   - "3.6"
@@ -53,7 +53,7 @@ install:
   - "travis_retry pip install -e .[$EXTRAS]"
   - "travis_retry pip uninstall -y invenio"
   - "travis_retry pip install -e .[tests]"
-  - "travis_retry pip uninstall pytest-invenio"   # just keep dependencies, not the test package as it overwrites app
+  - "travis_retry pip uninstall -y pytest-invenio"   # just keep dependencies, not the test package as it overwrites app
 script:
   - "./run-tests.sh"
 

@@ -44,7 +44,7 @@ pip install -e .[$EXTRAS]
 pip uninstall -y invenio
 pip install -e .[tests]
 
-pip uninstall pytest-invenio
+pip uninstall -y pytest-invenio
 
 sphinx-build -qnNW docs docs/_build/html
 
