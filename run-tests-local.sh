@@ -45,6 +45,7 @@ pip uninstall -y invenio
 pip install -e .[tests]
 
 pip uninstall -y pytest-invenio
+pip uninstall -y invenio-oaiserver
 
 sphinx-build -qnNW docs docs/_build/html
 

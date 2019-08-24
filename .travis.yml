@@ -53,7 +53,8 @@ install:
   - "travis_retry pip install -e .[$EXTRAS]"
   - "travis_retry pip uninstall -y invenio"
   - "travis_retry pip install -e .[tests]"
-  - "travis_retry pip uninstall -y pytest-invenio"   # just keep dependencies, not the test package as it overwrites app
+  - "travis_retry pip uninstall -y pytest-invenio"      # just keep dependencies, not the test package as it overwrites app
+  - "travis_retry pip uninstall -y invenio-oaiserver"   # problems with deps - marshmallow
 script:
   - "./run-tests.sh"
 
