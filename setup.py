@@ -41,6 +41,7 @@ tests_require = [
     'pytest-cov>=2.7.1',
     'pytest-pep8>=1.0.6',
     'pytest>=4.6.4,<5.0.0',
+    'marshmallow>=2.0.0,<3.0.0'
     # 'invenio[tests]~={0}'.format(INVENIO_VERSION),
 ]
 
