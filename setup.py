@@ -57,8 +57,13 @@ extras_require = {
     ]
 }
 
-extras_require['all'].extend(extras_require['docs'])
-extras_require['all'].extend(extras_require['tests'])
+for k,v in extras_require.items():
+    if not k.startswith('all-'):
+        continue
+    for kk, vv in extras_require.items():
+        if kk.startswith('all-'):
+            continue
+        v.extend(vv)
 
 setup_requires = [
     'pytest-runner>=2.6.2',
